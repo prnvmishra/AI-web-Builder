@@ -2,7 +2,7 @@ import axios from 'axios';
 import { auth } from '../lib/firebase';
 
 const api = axios.create({
-    baseURL: import.meta.env.PROD ? import.meta.env.VITE_PROD_BASEURL : import.meta.env.VITE_BASEURL || 'http://localhost:3000',
+    baseURL: import.meta.env.VITE_PROD_BASEURL || import.meta.env.VITE_BASEURL || 'http://localhost:3000',
     withCredentials: true
 })
 
