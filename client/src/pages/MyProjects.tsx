@@ -94,7 +94,14 @@ const MyProjects = () => {
                                 <p className='text-gray-400 mt-1 text-sm line-clamp-2'>{project.initial_prompt}</p>
 
                                 <div onClick={(e)=>e.stopPropagation()} className='flex justify-between items-center mt-6'>
-                                    <span className='text-xs text-gray-500'>{new Date(project.createdAt).toLocaleDateString()}</span>
+                                    <span className='text-xs text-gray-500'>
+                                        {project.createdAt ? (() => {
+                                            const date = project.createdAt._seconds 
+                                                ? new Date(project.createdAt._seconds * 1000) 
+                                                : new Date(project.createdAt);
+                                            return date.toLocaleDateString();
+                                        })() : 'Unknown Date'}
+                                    </span>
                                     <div className='flex gap-3 text-white text-sm'>
 
                                         <button onClick={()=>navigate(`/preview/${project.id}`)} className='px-3 py-1.5 bg-white/10 hover:bg-white/15 rounded-md transition-all'>Preview</button>

@@ -24,6 +24,15 @@ const Navbar = () => {
     }
 
     useEffect(()=>{
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          getCredits();
+        }
+      });
+      return () => unsubscribe();
+    },[])
+
+    useEffect(()=>{
       if(session?.user){
         getCredits()
       }
